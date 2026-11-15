@@ -54,7 +54,7 @@ function pause(){state.playing=false;state.last=null;render()}
 function setMode(mode){state.mode=mode;pause();$('evBtn').classList.toggle('active',mode==='ev');$('phoneBtn').classList.toggle('active',mode==='phone');$('evBtn').setAttribute('aria-pressed',mode==='ev'?'true':'false');$('phoneBtn').setAttribute('aria-pressed',mode==='phone'?'true':'false');render(true)}
 $('evBtn').addEventListener('click',()=>setMode('ev'));$('phoneBtn').addEventListener('click',()=>setMode('phone'));
 $('temp').addEventListener('change',e=>{state.temp=e.target.value;render(true)});
-$('soc').addEventListener('input',e=>{pause();setSoc(e.target.value)});
+$('soc').addEventListener('input',e=>{const value=e.target.value;pause();setSoc(value)});
 document.querySelectorAll('[data-jump]').forEach(b=>b.addEventListener('click',()=>{pause();setSoc(+b.dataset.jump)}));
 $('play').addEventListener('click',()=>{if(state.soc>=100)state.soc=0;state.playing=!state.playing;state.last=null;render()});
 $('reset').addEventListener('click',()=>{pause();setSoc(20)});
